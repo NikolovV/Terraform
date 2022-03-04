@@ -1,0 +1,46 @@
+{
+  "shop-service": [
+    {
+      "PutRequest": {
+        "Item": {
+          "item_id": {
+            "S": "12kl1j23k1j23kl"
+          },
+          "name": {
+            "S": "soccer ball"
+          },
+          "type": {
+            "S": "sport stock"
+          },
+          "price": {
+            "S": "123.45"
+          },
+          "qty": {
+            "S": "10"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "item_id": {
+            "S": "erjwlekrj90r23f"
+          },
+          "name": {
+            "S": "Coca Cola"
+          },
+          "type": {
+            "S": "drinks"
+          },
+          "price": {
+            "S": "1.45"
+          },
+          "qty": {
+            "S": "100"
+          }
+        }
+      }
+    }
+  ]
+}
