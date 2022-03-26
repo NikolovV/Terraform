@@ -1,6 +1,6 @@
 ## Simple Retail REST API.
 ---
-**API Gateway, Lambda, Step Function, DynamoDB**</br>
+**API Gateway, Lambda, Step Function, DynamoDB, SNS**</br>
 **Resources:**</br>
 >[AWS Step Functions workshop](https://step-functions-workshop.go-aws.com/) - Intro to service coordination using AWS Step Functions</br>
 >[API Gateway trigger](https://docs.aws.amazon.com/step-functions/latest/dg/tutorial-api-gateway.html) - Creating a Step Functions API Using API Gateway</br>
@@ -25,12 +25,11 @@
 
 ## Step to provision
 ---
-1. Set SNS email recipient in variable sns_subscr_config.email_endpoint.
-2. Deploy resource with terraform.
-3. Put the state machine arn in lambda_invoke_stfn.py
-4. Open email and confirm subscription.
-5. Load test data in test folder.
-6. Make tests.
+1. Deploy resource with terraform.
+2. Put the state machine arn in lambda_invoke_stfn.py
+3. Open email and confirm subscription.
+4. Load test data in test folder.
+5. Make tests.
 
 ## Requirements
 | Name | Version |
