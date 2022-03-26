@@ -12,7 +12,7 @@ def lambda_invoke_stfn_handler(event, context):
         step_fn_cl = boto3.client('stepfunctions')
         response = step_fn_cl.start_execution(
             input=input,
-            stateMachineArn="<STEP-FUNCTIONS-ARN>",
+            stateMachineArn="<STATE_MACHINES_ARN>",
             name=transaction_id
         )
 

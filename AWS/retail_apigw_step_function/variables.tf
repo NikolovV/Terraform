@@ -172,3 +172,31 @@ variable "lambda_invoke_stfn_config" {
     create_current_version_allowed_triggers = false
   }
 }
+
+variable "sns_name" {
+  description = "SNS Notification Service name."
+  type        = string
+  default     = "retail-sns-topic"
+}
+
+variable "sns_subscr_config" {
+  description = "Configuration map for SNS subscription."
+  type        = map(any)
+  default = {
+    protocol       = "email"
+    email_endpoint = "YOUR_EMAIL@PROVIDER"
+  }
+}
+
+variable "sns_fail_message" {
+  description = "SNS Notification Service fail message."
+  type        = string
+  default     = "Sorry! Order processing fail. Please contact customer service."
+}
+
+variable "sns_success_message" {
+  description = "SNS Notification Service success message."
+  type        = string
+  default     = "Order is processed."
+}
+

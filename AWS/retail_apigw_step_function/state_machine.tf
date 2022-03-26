@@ -11,6 +11,7 @@ locals {
               "StartAt" : "CheckAccountAvailability",
               "States" : {
                 "CheckAccountAvailability" : {
+                  "Comment" : "Checks whether account have enough balance.",
                   "Type" : "Task",
                   "Resource" : "arn:aws:states:::lambda:invoke",
                   "Parameters" : {
@@ -29,6 +30,7 @@ locals {
               "StartAt" : "CheckStockAvailability",
               "States" : {
                 "CheckStockAvailability" : {
+                  "Comment" : "Checks whether store have requested items.",
                   "Type" : "Task",
                   "Resource" : "arn:aws:states:::lambda:invoke",
                   "Parameters" : {
@@ -44,7 +46,28 @@ locals {
               }
             }
           ],
-          "Next" : "AvailabilityCheck"
+          "ResultPath" : "$.parallelResult",
+          "Next" : "PassStateFlatParrallelArrayOutput",
+          "Catch" : [
+            {
+              "ErrorEquals" : [
+                "Exception"
+              ],
+              "Next" : "SendFailMessageToSNS"
+            }
+          ]
+        },
+        "PassStateFlatParrallelArrayOutput" : {
+          "Comment" : "Pass state to flatten parallel array output.",
+          "Type" : "Pass",
+          "Next" : "AvailabilityCheck",
+          "Parameters" : {
+            "accountAvailability.$" : "$.parallelResult[0].availability",
+            "accountError.$" : "$.parallelResult[0].Error",
+            "stockAvailability.$" : "$.parallelResult[1].stockAvailability",
+            "stockError.$" : "$.parallelResult[1].Error"
+          },
+          "ResultPath" : "$.parallelResult"
         },
         "AvailabilityCheck" : {
           "Type" : "Choice",
@@ -52,23 +75,45 @@ locals {
             {
               "And" : [
                 {
-                  "Variable" : "$.[0].availability",
+                  "Variable" : "$.parallelResult.accountAvailability",
                   "BooleanEquals" : true
                 },
                 {
-                  "Variable" : "$.[1].availability",
+                  "Variable" : "$.parallelResult.stockAvailability",
                   "BooleanEquals" : true
                 }
               ],
-              "Next" : "SucceedState"
+              "Next" : "SendAcceptanceMessageToSNS"
             }
           ],
-          "Default" : "FailState"
+          "Default" : "SendFailMessageToSNS"
+        },
+        "SendFailMessageToSNS" : {
+          "Type" : "Task",
+          "Resource" : "arn:aws:states:::sns:publish",
+          "Parameters" : {
+            "TopicArn" : "${aws_sns_topic.sns_retail_topic.arn}",
+            "Message" : {
+              "Input" : "${var.sns_fail_message}"
+            }
+          },
+          "Next" : "FailState"
         },
         "FailState" : {
           "Type" : "Fail",
           "Error" : "Tracnsaction can't be compleate.",
           "Cause" : "Account or stock availability fail."
+        },
+        "SendAcceptanceMessageToSNS" : {
+          "Type" : "Task",
+          "Resource" : "arn:aws:states:::sns:publish",
+          "Parameters" : {
+            "TopicArn" : "${aws_sns_topic.sns_retail_topic.arn}",
+            "Message" : {
+              "Input" : "${var.sns_success_message}"
+            }
+          },
+          "Next" : "SucceedState"
         },
         "SucceedState" : {
           "Type" : "Succeed"
@@ -88,6 +133,9 @@ module "step_function" {
   service_integrations = {
     lambda = {
       lambda = [module.lambda_check_stock.lambda_function_arn, module.lambda_check_account.lambda_function_arn]
+    },
+    sns = {
+      sns = [aws_sns_topic.sns_retail_topic.arn]
     }
   }
 
