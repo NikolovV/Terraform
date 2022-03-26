@@ -4,7 +4,10 @@
 **Resources:**</br>
 >[AWS Step Functions workshop](https://step-functions-workshop.go-aws.com/) - Intro to service coordination using AWS Step Functions</br>
 >[API Gateway trigger](https://docs.aws.amazon.com/step-functions/latest/dg/tutorial-api-gateway.html) - Creating a Step Functions API Using API Gateway</br>
->[Boto3 Docs](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/dynamodb.html#table) - A resource representing an Amazon DynamoDB Table
+>[Boto3 Docs](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/dynamodb.html#table) - A resource representing an Amazon DynamoDB Table</br>
+>[Flatten paralell array output](https://stackoverflow.com/questions/54105792/parallel-states-merge-the-output-in-step-function) - Parallel States Merge the output in Step Function</br>
+>[Step Functions SNS Example](https://docs.aws.amazon.com/step-functions/latest/dg/sample-project-codebuild.html) - Build an AWS CodeBuild Project (CodeBuild, Amazon SNS)</br>
+>[Handling Error](https://docs.aws.amazon.com/step-functions/latest/dg/tutorial-handling-error-conditions.html) - Handling Error Conditions Using a Step Functions State Machine</br>
 
 ##### Terraform modules:
 ---
@@ -12,10 +15,22 @@
 >[AWS Lambda](https://registry.terraform.io/modules/terraform-aws-modules/lambda/aws/latest) - Terraform module, which takes  care of a lot of AWS Lambda/serverless tasks (build dependencies, packages, updates, deployments) in countless combinations</br>
 > [AWS DynamoDB table](https://registry.terraform.io/modules/terraform-aws-modules/dynamodb-table/aws/latest) - Terraform module which creates DynamoDB table on AWS</br>
 > [Step Functions](https://registry.terraform.io/modules/terraform-aws-modules/step-functions/aws/latest?tab=inputs) - Terraform module which creates Step Functions on AWS</br>
+> [SNS Topic](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sns_topic) - Provides an SNS topic resource</br>
+> [SNS Topic subscription](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sns_topic_subscription) - subscription</br>
+
 ## Features
 ---
 - POST request with order at API Gateway endpoint call Lambda which trigger the State Machine workflow.
 - Parallel state check for account and stock availability.
+
+## Step to provision
+---
+1. Set SNS email recipient in variable sns_subscr_config.email_endpoint.
+2. Deploy resource with terraform.
+3. Put the state machine arn in lambda_invoke_stfn.py
+4. Open email and confirm subscription.
+5. Load test data in test folder.
+6. Make tests.
 
 ## Requirements
 | Name | Version |

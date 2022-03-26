@@ -26,14 +26,14 @@ def check_stock_availability(request, table_db):
 
 
 def check_stock_handler(event, context):
-    response = {"availability": True, "Error": ""}
+    response = {"stockAvailability": True, "Error": ""}
 
     try:
         table = get_table(event)
-        response["availability"] = check_stock_availability(event, table)
+        response["stockAvailability"] = check_stock_availability(event, table)
 
     except ClientError as e:
-        response["availability"] = False
+        response["stockAvailability"] = False
         response["Error"] = e.response
 
     return response
