@@ -1,0 +1,77 @@
+{
+    "customer_id": {
+        "S": "sdgsgsfewef"
+    },
+    "personal_info": {
+        "M": {
+            "last_name": {
+                "S": "lksfgl"
+            },
+            "email": {
+                "S": "lkafjlk@sdf.gdg"
+            },
+            "first_name": {
+                "S": "eprgje"
+            }
+        }
+    },
+    "account": {
+        "L": [
+            {
+                "M": {
+                    "card_number": {
+                        "S": "345-56546547-23452"
+                    },
+                    "operation_ct": {
+                        "L": [
+                            {
+                                "M": {
+                                    "amount": {
+                                        "S": "1234"
+                                    },
+                                    "date_id": {
+                                        "S": "20220101"
+                                    }
+                                }
+                            },
+                            {
+                                "M": {
+                                    "amount": {
+                                        "S": "12345"
+                                    },
+                                    "date_id": {
+                                        "S": "20220201"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    "operation_dt": {
+                        "L": [
+                            {
+                                "M": {
+                                    "amount": {
+                                        "S": "1234"
+                                    },
+                                    "date_id": {
+                                        "S": "20220101"
+                                    }
+                                }
+                            },
+                            {
+                                "M": {
+                                    "amount": {
+                                        "S": "12345"
+                                    },
+                                    "date_id": {
+                                        "S": "20220201"
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                }
+            }
+        ]
+    }
+}

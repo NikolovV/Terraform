@@ -1,0 +1,16 @@
+{
+    "customer_id": "j2kj3hkj2h2jk",
+    "card_id": "234-56456-234-65",
+    "orders": [
+        {
+            "item_id": "12kl1j23k1j23kl",
+            "qty": "3",
+            "unit_price": "123.45"
+        },
+        {
+            "item_id": "erjwlekrj90r23f",
+            "qty": "50",
+            "unit_price": "1.45"
+        }
+    ]
+}

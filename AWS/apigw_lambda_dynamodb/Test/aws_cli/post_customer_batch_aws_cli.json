@@ -1,0 +1,166 @@
+{
+    "customer_info": [
+        {
+            "PutRequest": {
+                "Item": {
+                    "customer_id": {
+                        "S": "njjj342kj44j"
+                    },
+                    "personal_info": {
+                        "M": {
+                            "last_name": {
+                                "S": "ssfssdfsfsf"
+                            },
+                            "email": {
+                                "S": "sdfs@sdf.gdg"
+                            },
+                            "first_name": {
+                                "S": "gfhfghfgh"
+                            }
+                        }
+                    },
+                    "account": {
+                        "L": [
+                            {
+                                "M": {
+                                    "card_number": {
+                                        "S": "345-56546547-23452"
+                                    },
+                                    "operation_ct": {
+                                        "L": [
+                                            {
+                                                "M": {
+                                                    "amount": {
+                                                        "S": "1234"
+                                                    },
+                                                    "date_id": {
+                                                        "S": "20220101"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "M": {
+                                                    "amount": {
+                                                        "S": "12345"
+                                                    },
+                                                    "date_id": {
+                                                        "S": "20220201"
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    "operation_dt": {
+                                        "L": [
+                                            {
+                                                "M": {
+                                                    "amount": {
+                                                        "S": "1234"
+                                                    },
+                                                    "date_id": {
+                                                        "S": "20220101"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "M": {
+                                                    "amount": {
+                                                        "S": "12345"
+                                                    },
+                                                    "date_id": {
+                                                        "S": "20220201"
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "customer_id": {
+                        "S": "jkgsfs"
+                    },
+                    "personal_info": {
+                        "M": {
+                            "last_name": {
+                                "S": "fgh5gfg"
+                            },
+                            "email": {
+                                "S": "cvb@sdf.gdg"
+                            },
+                            "first_name": {
+                                "S": "dfhhdfh"
+                            }
+                        }
+                    },
+                    "account": {
+                        "L": [
+                            {
+                                "M": {
+                                    "card_number": {
+                                        "S": "345-56546547-23452"
+                                    },
+                                    "operation_ct": {
+                                        "L": [
+                                            {
+                                                "M": {
+                                                    "amount": {
+                                                        "S": "1234"
+                                                    },
+                                                    "date_id": {
+                                                        "S": "20220101"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "M": {
+                                                    "amount": {
+                                                        "S": "12345"
+                                                    },
+                                                    "date_id": {
+                                                        "S": "20220201"
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    "operation_dt": {
+                                        "L": [
+                                            {
+                                                "M": {
+                                                    "amount": {
+                                                        "S": "1234"
+                                                    },
+                                                    "date_id": {
+                                                        "S": "20220101"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "M": {
+                                                    "amount": {
+                                                        "S": "12345"
+                                                    },
+                                                    "date_id": {
+                                                        "S": "20220201"
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    ]
+}
