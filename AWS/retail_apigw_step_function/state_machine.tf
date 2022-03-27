@@ -101,7 +101,7 @@ locals {
         },
         "FailState" : {
           "Type" : "Fail",
-          "Error" : "Tracnsaction can't be compleate.",
+          "Error" : "Transaction can't be complete.",
           "Cause" : "Account or stock availability fail."
         },
         "SendAcceptanceMessageToSNS" : {
